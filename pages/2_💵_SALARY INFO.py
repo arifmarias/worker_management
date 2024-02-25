@@ -132,94 +132,33 @@ if selected == "Salary Payment":
                     
                     st.success("Data saved!")
                     
-        
+if selected == 'Salary Info':
+    cols = st.columns(2)
+    with cols[0]: 
+        # ----- SEARCHBOX FOR WORKER------------
+        worker_name = df_info["worker_name"].drop_duplicates().sort_values(ascending=True)
+        lst_worker_name = list(worker_name)
+        lst_worker_name.insert(0,"Select")
+        w_name = st.selectbox(options = lst_worker_name, label="Select Worker Name")
+    with cols[1]:
+        # ----- SEARCHBOX FOR YEAR-MONTH ------------
+        select_month_year = df_salary['year_month'].drop_duplicates().sort_values()
+        lst_month_year = list(select_month_year)
+        lst_month_year.insert(0,"Select")
+        report_month_year = st.selectbox(options=lst_month_year,label="Select desire Year-Month")
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-#     # ----- RETRIVE WORKER DATAFRAME ------------
-#     selected_worker = df_info[df_info["worker_name"] == w_name]
-#     if w_name!='Select':
-#         # --- DROP DOWN VALUES FOR SELECTING THE PERIOD ---
-#         years = [datetime.today().year, datetime.today().year + 1]
-#         months = list(calendar.month_name[1:])
-#         pay_date = st.date_input("Payment Date")
-#         year = pay_date.year
-#         month = pay_date.month
-#         day = pay_date.day
-#         left, right = st.columns(2)
-#         with st.form("entry_form", clear_on_submit=True):
-#             st.subheader("Base Salary: "+f"RM {selected_worker['worker_base_salary'].values[0]:,}")
-#             cols = st.columns(2)
-#             with cols[0]:
-#                 today_pay = st.number_input("Today's Payment ⋆")
-#             with cols[1]:
-#                 payment_purpose = st.selectbox("Payment Purpose ⋆",("Select","Salary Payment","Advance Salary Payment","Other Purposes"))
-                
-#             "---"
-#             submitted = st.form_submit_button("Save Data")
-            
-#             if submitted:
-#                 if payment_purpose == 'Select' or today_pay == 0:
-#                     st.error('Data Missing',icon='❌')
-#                 else:    
-#                     input_date = str(day) + "/" + str(month) + "/" +str(year)
-#                     year_month = str(year) + "_" + str(month)
-#                     period = str(year)
-#                     # Save Data into Database
-#                     base_salary = selected_worker['worker_base_salary'].values[0]
-#                     # st.write(type(base_salary))
-#                     db.insert_salary_data(
-#                                     worker_name
-#                                     )
-                       
-                        
-#                     # Success Message
-#                     st.success("Data saved!")
-
-# # --- SEARCH WORKER INFO ---
-
-# if selected == "Salary Info":
-#     st.header("Search Worker Information")
-#     # ----- GET ALL GOAT DATA FROM DATABASE------------
-#     items = db.fetch_all_periods()
-#     df = pd.DataFrame(items)
-
-#     # ----- SEARCHBOX ------------
-#     worker_name = df["worker_name"].drop_duplicates().sort_values(ascending=False)
-#     lst_worker_name = list(worker_name)
-#     lst_worker_name.insert(0,"Select")
-#     w_name = st.selectbox(options = lst_worker_name, label="")
-#     if w_name!='Select':
-#         selected_worker = df[df["worker_name"] == w_name]
-#         cols = st.columns(3)
-#         with cols[0]:
-#             ui.metric_card(title="Name", content=selected_worker["worker_name"].values[0], description="Join in "+selected_worker['worker_joining_date'].values[0]+","+selected_worker['worker_gender'].values[0]+"\n Mobile: "+selected_worker['worker_phone_number'].values[0], key="card1")
-#         with cols[1]:
-#             ui.metric_card(title="Passport Details", content=selected_worker["worker_passport"].values[0], description="Expiry Date: "+selected_worker['worker_pass_expiry'].values[0]+"\n Visa Expiry: "+selected_worker['worker_visa_expiry'].values[0], key="card2")
-#         with cols[2]:
-#             ui.metric_card(title="Workplace", content=selected_worker["worker_current_company"].values[0], description="Joined "+selected_worker['worker_currentcompany_joindate'].values[0]+"\n Address: "+selected_worker['worker_current_workplace'].values[0], key="card3")
+    view_df = df_salary[(df_salary['worker_name'] == w_name) & (df_salary['year_month']==report_month_year)]
+    if not view_df.empty:
+        selected_worker = df_info[df_info["worker_name"] == w_name]
+        match_df = pd.DataFrame(view_df.sort_values("salary_remain",ascending=True).head(1))
+        salary_remain = match_df["salary_remain"].values[0]
+        cols = st.columns(2)
+        with cols[0]:
+            ui.metric_card(title="Base Salary", content=f"RM {selected_worker['worker_base_salary'].values[0]:,}", key="card1")
+        with cols[1]:
+            ui.metric_card(title="Remining Salary", content=f"RM {salary_remain:,}", key="card2")
+        view_df = view_df[['payment_date','payment_purpose','today_pay']]
+        view_df = view_df.rename(columns={'payment_date':"Payment Date",'payment_purpose':"Payment Purpose",'today_pay':"Payment Made(RM)"})
+        ui.table(data=view_df, maxHeight=300)
 
     
