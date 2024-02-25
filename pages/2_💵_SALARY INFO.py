@@ -91,7 +91,7 @@ if selected == "Salary Payment":
                 with cols[0]:
                     ui.metric_card(title="Base Salary", content=f"RM {selected_worker['worker_base_salary'].values[0]:,}", key="card1")
                 with cols[1]:
-                    ui.metric_card(title="Remining Salary, "+ calendar.month_name[month], content=f"RM {salary_remain:,}", key="card2")
+                    ui.metric_card(title="Remaining Salary, "+ calendar.month_name[month], content=f"RM {salary_remain:,}", key="card2")
                     #st.subheader("Remining Salary for Selected Month: "+f"RM {salary_remain:,}")
         
         with st.form("entry_form", clear_on_submit=True):       
@@ -156,7 +156,7 @@ if selected == 'Salary Info':
         with cols[0]:
             ui.metric_card(title="Base Salary", content=f"RM {selected_worker['worker_base_salary'].values[0]:,}", key="card1")
         with cols[1]:
-            ui.metric_card(title="Remining Salary", content=f"RM {salary_remain:,}", key="card2")
+            ui.metric_card(title="Remaining Salary", content=f"RM {salary_remain:,}", key="card2")
         view_df = view_df[['payment_date','payment_purpose','today_pay']]
         view_df = view_df.rename(columns={'payment_date':"Payment Date",'payment_purpose':"Payment Purpose",'today_pay':"Payment Made(RM)"})
         ui.table(data=view_df, maxHeight=300)
