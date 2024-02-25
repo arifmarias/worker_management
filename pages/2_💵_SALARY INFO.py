@@ -9,6 +9,7 @@ import plotly.graph_objects as go  # pip install plotly
 import streamlit as st  # pip install streamlit
 from streamlit_option_menu import option_menu  # pip install streamlit-option-menu
 import streamlit_shadcn_ui as ui
+from streamlit_extras.switch_page_button import switch_page
 
 # -------------- SETTINGS --------------
 currency = "RM"
