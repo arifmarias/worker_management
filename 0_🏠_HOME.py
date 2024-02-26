@@ -36,13 +36,12 @@ with st.container():
     left_column, middle_column, right_column = st.columns(3)
     worker = left_column.button("🙆🏻‍♂️ Worker Profile")
     salary = middle_column.button("💵 Salary Information")
-    report = right_column.button("📈 Reports")
+    
     if worker:
         switch_page("WORKER PROFILE")
     if salary:
         switch_page("SALARY INFO")
-    if report:
-        switch_page("REPORT")
+
 st.markdown("""---""")
 # ----- GET ALL WORKER DATA FROM WORKER_PROFILE ------------
 items = db.fetch_all_periods()
