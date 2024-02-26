@@ -139,7 +139,7 @@ if selected == 'Salary Info':
         worker_name = df_info["worker_name"].drop_duplicates().sort_values(ascending=True)
         lst_worker_name = list(worker_name)
         lst_worker_name.insert(0,"Select")
-        w_name = st.selectbox(options = lst_worker_name, label="Select Worker Name")
+        w_name = st.selectbox(options = lst_worker_name, label="Select Worker Name",index=0)
     with cols[1]:
         # ----- SEARCHBOX FOR YEAR-MONTH ------------
         select_month_year = df_salary['year_month'].drop_duplicates().sort_values()

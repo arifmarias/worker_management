@@ -77,7 +77,7 @@ if not df_info.empty:
 
     cols = st.columns(3)
     with cols[0]:
-        ui.metric_card(title="Number of Workers", content=str(total_number_of_workers), description="Working in AD HCARE ", key="card1")
+        ui.metric_card(title="Number of Workers", content=str(total_number_of_workers), description="Working with AD HCARE ", key="card1")
     with cols[1]:
         ui.metric_card(title="Total Salary", content=f"RM {total_base_salary:,}", description="For All Workers", key="card2")
     with cols[2]:
