@@ -11,7 +11,7 @@ from st_aggrid import AgGrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 from streamlit_extras.switch_page_button import switch_page
 import streamlit_shadcn_ui as ui
-import database as db  # local import
+import database as db
 
 # -------------- SETTINGS --------------
 currency = "RM"
