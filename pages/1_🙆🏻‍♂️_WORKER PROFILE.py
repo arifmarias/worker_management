@@ -33,6 +33,12 @@ year = d.year
 month = d.month
 day = d.day
 
+#------------- STATES MALAYSIA----------------------
+my_states = ['Kuala Lumpur','Putrajaya','Labuan','Selangor','Malacca',\
+'Negeri Sembilan','Penang','Johor','Kedah','Kelantan','Perak','Pahang',\
+'Terengganu','Perlis','Sabah','Sarawak']
+
+
  # ----- GET ALL WORKER DATA FROM DATABASE------------
 items = db.fetch_all_periods()
 df = pd.DataFrame(items)
@@ -83,7 +89,7 @@ if selected == "Employee/Worker Information":
             with st.expander("Work Related Info"):
                 worker_current_company = st.text_input("Current Working Company Name")
                 worker_current_workplace = st.text_area("Address")
-                
+                worker_state = st.selectbox("State",my_states)
                 worker_pic = st.text_area("Current Company PIC(Person-in-Charge) Details")
                 worker_currentcompany_joindate = st.date_input("Current Company Join Date")
                 
