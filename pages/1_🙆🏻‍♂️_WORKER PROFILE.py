@@ -179,7 +179,7 @@ if selected == "Edit Worker Information":
                 with st.expander("Work Related Info"):
                     worker_current_company = st.text_input("Current Working Company Name",selected_worker['worker_current_company'].values[0],key=4)
                     worker_current_workplace = st.text_area("Address",selected_worker['worker_current_workplace'].values[0],key=6)
-                    worker_state_new = st.selectbox("State",options=my_states,kwargs = {"States":my_states},key=8)
+                    worker_state = st.selectbox("State",options=my_states,placeholder= selected_worker['worker_state'].values[0] ,key=8)
                     worker_pic = st.text_area("Current Company PIC(Person-in-Charge) Details",selected_worker['worker_pic'].values[0],key=7)
                    # worker_currentcompany_joindate = st.date_input("Current Company Join Date",selected_worker['worker_currentcompany_joindate'].values[0])
                     
