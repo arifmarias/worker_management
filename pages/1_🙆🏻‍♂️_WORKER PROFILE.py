@@ -189,5 +189,5 @@ if selected == "Edit Worker Information":
             with st.expander("Other"):
                 comments = st.text_input("Comments(if any)",selected_worker['comments'].values[0],key=5)
             "---"
-            submitted = st.form_submit_button("Save Data")
+            submitted = st.form_submit_button("Update Data")
     
