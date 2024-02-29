@@ -149,7 +149,9 @@ if selected == "Search":
 
 if selected == "Edit Worker Information":
     st.header("Edit Worker Information")
-    st.session_state['state_list']=[]
+    st.session_state['state_list']=['Kuala Lumpur','Putrajaya','Labuan','Selangor','Malacca',\
+                                            'Negeri Sembilan','Penang','Johor','Kedah','Kelantan','Perak','Pahang',\
+                                            'Terengganu','Perlis','Sabah','Sarawak']
      # ----- GET ALL WORKER DATA FROM DATABASE------------
     items = db.fetch_all_periods()
     df = pd.DataFrame(items)
