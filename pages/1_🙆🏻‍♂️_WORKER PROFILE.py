@@ -33,6 +33,10 @@ d = date.today()
 year = d.year
 month = d.month
 day = d.day
+
+ # ----- GET ALL WORKER DATA FROM DATABASE------------
+items = db.fetch_all_periods()
+df = pd.DataFrame(items)
 # --------------------------------------
 # --- DATABASE INTERFACE ---
 # def get_all_periods():
@@ -111,9 +115,7 @@ if selected == "Employee/Worker Information":
 
 if selected == "Search":
     st.header("Search Worker Information")
-    # ----- GET ALL WORKER DATA FROM DATABASE------------
-    items = db.fetch_all_periods()
-    df = pd.DataFrame(items)
+   
 
     # ----- SEARCHBOX ------------
     worker_name = df["worker_name"].drop_duplicates().sort_values(ascending=False)
