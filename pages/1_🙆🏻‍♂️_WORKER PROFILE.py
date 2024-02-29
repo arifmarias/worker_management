@@ -61,8 +61,8 @@ st.markdown(hide_st_style, unsafe_allow_html=True)
 # --- NAVIGATION MENU ---
 selected = option_menu(
     menu_title=None,
-    options=["Employee/Worker Information","Search"],
-    icons=["person-plus-fill","search"],  # https://icons.getbootstrap.com/
+    options=["Employee/Worker Information","Search","Edit Worker Information"],
+    icons=["person-plus-fill","search","pencil"],  # https://icons.getbootstrap.com/
     orientation="horizontal",
 )
 
