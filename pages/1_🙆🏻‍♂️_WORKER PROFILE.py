@@ -163,7 +163,9 @@ if selected == "Edit Worker Information":
     w_name = st.selectbox(options = lst_worker_name, label="Select Worker Name",index=0)
     if w_name!='Select':
         def state_list():
-            st.session_state['state_list'] = my_states
+            st.session_state['state_list'] = ['Kuala Lumpur','Putrajaya','Labuan','Selangor','Malacca',\
+                                            'Negeri Sembilan','Penang','Johor','Kedah','Kelantan','Perak','Pahang',\
+                                            'Terengganu','Perlis','Sabah','Sarawak']
             
         selected_worker = df[df["worker_name"] == w_name]
         st.text_input("Worker Name",selected_worker['worker_name'].values[0])
