@@ -83,6 +83,7 @@ if selected == "Employee/Worker Information":
             with st.expander("Work Related Info"):
                 worker_current_company = st.text_input("Current Working Company Name")
                 worker_current_workplace = st.text_area("Address")
+                
                 worker_pic = st.text_area("Current Company PIC(Person-in-Charge) Details")
                 worker_currentcompany_joindate = st.date_input("Current Company Join Date")
                 

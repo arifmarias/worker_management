@@ -15,7 +15,7 @@ DETA_KEY = st.secrets["DETA_KEY"]
 deta = Deta(DETA_KEY)
 
 # This is how to create/connect a database
-db = deta.Base("worker_profile")
+db_worker = deta.Base("worker_profile")
 db_salary = deta.Base("Worker_salary")
 
 def insert_data(current,input_date,period,
@@ -28,7 +28,7 @@ def insert_data(current,input_date,period,
                 worker_pic, 
                 worker_currentcompany_joindate, 
                 worker_base_salary, comments):
-    return db.put({"key": current,"input_date": input_date,"period": period,
+    return db_worker.put({"key": current,"input_date": input_date,"period": period,
                    "worker_name":worker_name, 
                     "worker_joining_date":worker_joining_date, 
                     "worker_gender":worker_gender,
@@ -47,7 +47,7 @@ def insert_data(current,input_date,period,
 
 def fetch_all_periods():
     """Returns a dict of all periods"""
-    res = db.fetch()
+    res = db_worker.fetch()
     return res.items
 
 
