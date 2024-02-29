@@ -179,6 +179,6 @@ if selected == "Edit Worker Information":
                     worker_base_salary = st.number_input("Worker Current Base Salary",selected_worker['worker_base_salary'].values[0])
                 
             with st.expander("Other"):
-                comments = st.text_input("Comments(if any)",selected_worker['comments'].values[0],key=selected_worker['key'].values[0],key=5)
+                comments = st.text_input("Comments(if any)",selected_worker['comments'].values[0],key=5)
         
     
