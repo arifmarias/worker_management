@@ -1,12 +1,7 @@
-import os 
 import streamlit as st  # pip install streamlit
 from deta import Deta  # pip install deta
-from dotenv import load_dotenv
 from datetime import datetime
 
-# Load the environment variables
-#load_dotenv(".env")
-#DETA_KEY = os.getenv("DETA_KEY")
 #DETA_KEY = "c06szqbzn1w_KJX9dg5Nwqw8oYQaNL2zJwMJe641nk9Y"
 
 # Load the environment variables
