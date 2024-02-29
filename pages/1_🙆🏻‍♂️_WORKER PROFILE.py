@@ -157,7 +157,7 @@ if selected == "Edit Worker Information":
         with st.form("edit_form", clear_on_submit=True):
             with left:
                 with st.expander("General Information"):
-                    worker_name = st.text_input("Worker Name",value=selected_worker['worker_name'].values[0])
+                    worker_name = st.text_input("Worker Name",value=selected_worker['worker_name'].values[0],key=selected_worker['key'].values[0])
                     worker_joining_date = st.date_input("Employee Join Date",selected_worker['worker_joining_date'].values[0])
                     worker_gender = st.radio("Gender", options=("Male","Female"), horizontal=True)
                     worker_phone_number = st.text_input("Personal Phone Number",selected_worker['worker_phone_number'].values[0])
