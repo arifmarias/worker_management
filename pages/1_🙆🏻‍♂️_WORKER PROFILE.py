@@ -32,10 +32,7 @@ year = d.year
 month = d.month
 day = d.day
 
-#------------- STATES MALAYSIA----------------------
-my_states = ['Kuala Lumpur','Putrajaya','Labuan','Selangor','Malacca',\
-'Negeri Sembilan','Penang','Johor','Kedah','Kelantan','Perak','Pahang',\
-'Terengganu','Perlis','Sabah','Sarawak']
+
 
 
  # ----- GET ALL WORKER DATA FROM DATABASE------------
@@ -69,6 +66,10 @@ selected = option_menu(
 # --- INPUT & SAVE WORKER INFO ---
 if selected == "Employee/Worker Information":
     st.header("Worker Information Entry")
+    #------------- STATES MALAYSIA----------------------
+    my_states = ['Kuala Lumpur','Putrajaya','Labuan','Selangor','Malacca',\
+    'Negeri Sembilan','Penang','Johor','Kedah','Kelantan','Perak','Pahang',\
+    'Terengganu','Perlis','Sabah','Sarawak']
     "---"
     left, right = st.columns(2)
     with st.form("entry_form", clear_on_submit=True):
@@ -148,6 +149,9 @@ if selected == "Search":
 
 if selected == "Edit Worker Information":
     st.header("Edit Worker Information")
+    my_states = ['Kuala Lumpur','Putrajaya','Labuan','Selangor','Malacca',\
+    'Negeri Sembilan','Penang','Johor','Kedah','Kelantan','Perak','Pahang',\
+    'Terengganu','Perlis','Sabah','Sarawak']
      # ----- GET ALL WORKER DATA FROM DATABASE------------
     items = db.fetch_all_periods()
     df = pd.DataFrame(items)
