@@ -110,7 +110,7 @@ if selected == "Employee/Worker Information":
                            worker_name, str(worker_joining_date), worker_gender,
                            worker_phone_number, worker_passport, str(worker_pass_expiry), 
                            str(worker_visa_expiry), worker_current_company,
-                           worker_current_workplace, worker_pic, 
+                           worker_current_workplace, worker_state,worker_pic, 
                            str(worker_currentcompany_joindate), worker_base_salary, 
                            comments
                            )
