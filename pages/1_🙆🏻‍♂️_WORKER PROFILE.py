@@ -149,9 +149,6 @@ if selected == "Search":
 
 if selected == "Edit Worker Information":
     st.header("Edit Worker Information")
-    state_list = ['Kuala Lumpur','Putrajaya','Labuan','Selangor','Malacca',\
-    'Negeri Sembilan','Penang','Johor','Kedah','Kelantan','Perak','Pahang',\
-    'Terengganu','Perlis','Sabah','Sarawak']
      # ----- GET ALL WORKER DATA FROM DATABASE------------
     items = db.fetch_all_periods()
     df = pd.DataFrame(items)
@@ -163,7 +160,8 @@ if selected == "Edit Worker Information":
     w_name = st.selectbox(options = lst_worker_name, label="Select Worker Name",index=0)
     if w_name!='Select':
         def state_list():
-            st.session_state['state_list'] = ['Kuala Lumpur','Putrajaya','Labuan','Selangor','Malacca',\
+            if 'state_list' not in st.session_state:
+                st.session_state['state_list'] = ['Kuala Lumpur','Putrajaya','Labuan','Selangor','Malacca',\
                                             'Negeri Sembilan','Penang','Johor','Kedah','Kelantan','Perak','Pahang',\
                                             'Terengganu','Perlis','Sabah','Sarawak']
             
