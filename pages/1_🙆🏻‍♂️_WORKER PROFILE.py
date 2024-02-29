@@ -101,20 +101,23 @@ if selected == "Employee/Worker Information":
         "---"
         submitted = st.form_submit_button("Save Data")
         if submitted:
-            input_date = str(day) + "/" + str(month) + "/" +str(year)
-            year_month = str(year) + "_" + str(month)
-            period = str(year)
-            # Save Data into Database
-            db.insert_data(str(datetime.utcnow()), input_date,period,
-                           worker_name, str(worker_joining_date), worker_gender,
-                           worker_phone_number, worker_passport, str(worker_pass_expiry), 
-                           str(worker_visa_expiry), worker_current_company,
-                           worker_current_workplace, worker_state,worker_pic, 
-                           str(worker_currentcompany_joindate), worker_base_salary, 
-                           comments
-                           )
-            # Success Message
-            st.success("Data saved!")
+            if worker_name!="":
+                input_date = str(day) + "/" + str(month) + "/" +str(year)
+                year_month = str(year) + "_" + str(month)
+                period = str(year)
+                # Save Data into Database
+                db.insert_data(str(datetime.utcnow()), input_date,period,
+                            worker_name, str(worker_joining_date), worker_gender,
+                            worker_phone_number, worker_passport, str(worker_pass_expiry), 
+                            str(worker_visa_expiry), worker_current_company,
+                            worker_current_workplace, worker_state,worker_pic, 
+                            str(worker_currentcompany_joindate), worker_base_salary, 
+                            comments
+                            )
+                # Success Message
+                st.success("Data saved!")
+            else:
+                st.error('Worker Name Empty',icon='❌')
 
 # --- SEARCH WORKER INFO ---
 
