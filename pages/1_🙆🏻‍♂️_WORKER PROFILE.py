@@ -160,7 +160,7 @@ if selected == "Edit Worker Information":
     if w_name!='Select':
         selected_worker = df[df["worker_name"] == w_name]
         st.text_input("Worker Name",selected_worker['worker_name'].values[0])
-        st.dataframe(selected_worker)
+        #st.dataframe(selected_worker)
         left, right = st.columns(2)
         with st.form("edit_form", clear_on_submit=True):
             with left:
