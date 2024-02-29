@@ -39,8 +39,8 @@ my_states = ['Kuala Lumpur','Putrajaya','Labuan','Selangor','Malacca',\
 
 
  # ----- GET ALL WORKER DATA FROM DATABASE------------
-items = db.fetch_all_periods()
-df = pd.DataFrame(items)
+# items = db.fetch_all_periods()
+# df = pd.DataFrame(items)
 # --------------------------------------
 # --- DATABASE INTERFACE ---
 # def get_all_periods():
@@ -83,7 +83,7 @@ if selected == "Employee/Worker Information":
                 worker_passport = st.text_input("Passport Number")
                 worker_pass_expiry = st.date_input("Passport Expiry Date")
                 worker_visa_expiry = st.date_input("Visa Expiry Date")
-                #uploaded_file = st.file_uploader("Upload Passport with Visa Page(.pdf)")
+                
         with right:
             with st.expander("Work Related Info"):
                 worker_current_company = st.text_input("Current Working Company Name")
@@ -123,6 +123,10 @@ if selected == "Employee/Worker Information":
 
 if selected == "Search":
     st.header("Search Worker Information")
+     # ----- GET ALL WORKER DATA FROM DATABASE------------
+    items = db.fetch_all_periods()
+    df = pd.DataFrame(items)
+    # --------------------------------------
    
 
     # ----- SEARCHBOX ------------
@@ -144,6 +148,10 @@ if selected == "Search":
 
 if selected == "Edit Worker Information":
     st.header("Edit Worker Information")
+     # ----- GET ALL WORKER DATA FROM DATABASE------------
+    items = db.fetch_all_periods()
+    df = pd.DataFrame(items)
+# --------------------------------------
     # ----- SEARCHBOX ------------
     worker_name = df["worker_name"].drop_duplicates().sort_values(ascending=False)
     lst_worker_name = list(worker_name)
@@ -180,5 +188,6 @@ if selected == "Edit Worker Information":
                 
             with st.expander("Other"):
                 comments = st.text_input("Comments(if any)",selected_worker['comments'].values[0],key=5)
-        
+            "---"
+            submitted = st.form_submit_button("Save Data")
     
