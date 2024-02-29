@@ -149,7 +149,7 @@ if selected == "Search":
 
 if selected == "Edit Worker Information":
     st.header("Edit Worker Information")
-    my_states = ['Kuala Lumpur','Putrajaya','Labuan','Selangor','Malacca',\
+    state_list = ['Kuala Lumpur','Putrajaya','Labuan','Selangor','Malacca',\
     'Negeri Sembilan','Penang','Johor','Kedah','Kelantan','Perak','Pahang',\
     'Terengganu','Perlis','Sabah','Sarawak']
      # ----- GET ALL WORKER DATA FROM DATABASE------------
