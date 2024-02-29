@@ -151,6 +151,7 @@ if selected == "Edit Worker Information":
     w_name = st.selectbox(options = lst_worker_name, label="Select Worker Name")
     if w_name!='Select':
         selected_worker = df[df["worker_name"] == w_name]
+        st.text_input("Worker Name",selected_worker['worker_name'].values[0])
         st.dataframe(selected_worker)
         
     
