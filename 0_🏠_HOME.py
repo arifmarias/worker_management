@@ -41,36 +41,37 @@ with st.container():
         switch_page("WORKER PROFILE")
     if salary:
         switch_page("SALARY INFO")
+cols = st.columns(1)
+with cols[1]:
+    st.markdown("""---""")
+    # ----- GET ALL WORKER DATA FROM WORKER_PROFILE ------------
+    items = db.fetch_all_periods()
+    df_info = pd.DataFrame(items)
+    # ----- GET ALL WORKER DATA FROM WORKER_SALARY ------------
+    items_salary = db.fetch_all_salary()
+    df_salary = pd.DataFrame(items_salary)
 
-st.markdown("""---""")
-# ----- GET ALL WORKER DATA FROM WORKER_PROFILE ------------
-items = db.fetch_all_periods()
-df_info = pd.DataFrame(items)
-# ----- GET ALL WORKER DATA FROM WORKER_SALARY ------------
-items_salary = db.fetch_all_salary()
-df_salary = pd.DataFrame(items_salary)
-
-# --- GET CURRENT MONTH YEAR ---
-years = [datetime.today().year, datetime.today().year + 1]
-months = list(calendar.month_name[1:])
-current_date = date.today()
-current_year = current_date.year
-current_month = current_date.month
-current_day = current_date.day
-current_year_month = str(current_year) + "-" + str(current_month)
-total_salary_remain = 0
-total_pay_out = 0
-if not df_info.empty:
-    total_number_of_workers = df_info['worker_name'].drop_duplicates().count()
-    total_base_salary = df_info['worker_base_salary'].sum()
-    for items in df_info.worker_name.unique():
-        view_df = df_salary[(df_salary['worker_name'] == items) & (df_salary['year_month']==current_year_month)]
-        if not view_df.empty:
-            match_df = pd.DataFrame(view_df.sort_values("salary_remain",ascending=True).head(1))
-            salary_remain = match_df["salary_remain"].sum()
-            pay_out = view_df["today_pay"].sum()
-            total_salary_remain +=salary_remain
-            total_pay_out +=pay_out
+    # --- GET CURRENT MONTH YEAR ---
+    years = [datetime.today().year, datetime.today().year + 1]
+    months = list(calendar.month_name[1:])
+    current_date = date.today()
+    current_year = current_date.year
+    current_month = current_date.month
+    current_day = current_date.day
+    current_year_month = str(current_year) + "-" + str(current_month)
+    total_salary_remain = 0
+    total_pay_out = 0
+    if not df_info.empty:
+        total_number_of_workers = df_info['worker_name'].drop_duplicates().count()
+        total_base_salary = df_info['worker_base_salary'].sum()
+        for items in df_info.worker_name.unique():
+            view_df = df_salary[(df_salary['worker_name'] == items) & (df_salary['year_month']==current_year_month)]
+            if not view_df.empty:
+                match_df = pd.DataFrame(view_df.sort_values("salary_remain",ascending=True).head(1))
+                salary_remain = match_df["salary_remain"].sum()
+                pay_out = view_df["today_pay"].sum()
+                total_salary_remain +=salary_remain
+                total_pay_out +=pay_out
     
     
 
