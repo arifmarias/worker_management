@@ -67,6 +67,7 @@ with cols[0]:
         for items in df_info.worker_name.unique():
             st.write(items)
             view_df = df_salary[(df_salary['worker_name'] == items) & (df_salary['year_month']==current_year_month)]
+            st.write(view_df)
             if not view_df.empty:
                 match_df = pd.DataFrame(view_df.sort_values("salary_remain",ascending=True).head(1))
                 salary_remain = match_df["salary_remain"].sum()
