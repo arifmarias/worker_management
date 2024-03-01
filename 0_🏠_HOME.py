@@ -70,6 +70,7 @@ with cols[0]:
                 match_df = pd.DataFrame(view_df.sort_values("salary_remain",ascending=True).head(1))
                 salary_remain = match_df["salary_remain"].sum()
                 pay_out = view_df["today_pay"].sum()
+                st.write(pay_out)
                 total_salary_remain +=salary_remain
                 total_pay_out +=pay_out
     
