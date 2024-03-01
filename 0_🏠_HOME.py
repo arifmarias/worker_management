@@ -54,10 +54,10 @@ with cols[0]:
     # --- GET CURRENT MONTH YEAR ---
     years = [datetime.today().year, datetime.today().year + 1]
     months = list(calendar.month_name[1:])
-    st.write(months)
     current_date = date.today()
     current_year = current_date.year
     current_month = current_date.month
+    st.write(type(current_month))
     current_day = current_date.day
     current_year_month = str(current_year) + "-" + str(current_month)
     total_salary_remain = 0
