@@ -206,7 +206,7 @@ if selected == "Edit Worker Information":
                     result = selectbox(
                                 "Select an option with different label",
                                 ["A", "B", "C"],
-                                no_selection_label="<None>",
+                                no_selection_label=selected_worker['worker_state'],
                             )
                     st.write(result)
                     # worker_state_new = st.selectbox("State",options=st.session_state['state_list'],key='second_sb')
