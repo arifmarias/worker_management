@@ -177,7 +177,7 @@ if selected == "Edit Worker Information":
                                             'Terengganu','Perlis','Sabah','Sarawak']
             
         selected_worker = df[df["worker_name"] == w_name]
-        edited_df = st.data_editor(selected_worker['worker_gender'],column_config={
+        st.data_editor(selected_worker['worker_gender'],column_config={
         "category": st.column_config.SelectboxColumn(
             "App Category",
             help="The category of the app",
