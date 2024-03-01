@@ -200,12 +200,14 @@ if selected == "Edit Worker Information":
                     #uploaded_file = st.file_uploader("Upload Passport with Visa Page(.pdf)")
             with right:
                 with st.expander("Work Related Info"):
+                    def myStates(selected_state):
+                        return [states for states in my_states if states!=selected_state]
                     worker_current_company = st.text_input("Current Working Company Name",selected_worker['worker_current_company'].values[0],key=4)
                     worker_current_workplace = st.text_area("Address",selected_worker['worker_current_workplace'].values[0],key=6)
                     #worker_state = selectbox("Select State",my_states,no_selection_label=selected_worker['worker_state'].values[0])
                     result = selectbox(
                                 "Select an option with different label",
-                                ["Kuala Lumpur", "Putrajaya", "Labuan","Malacca","Negeri Sembilan","Penang","Johor","Kedah"],
+                                myStates(selected_worker['worker_state'].values[0]),
                                 no_selection_label=str(selected_worker['worker_state'].values[0]),
                             )
                     st.write(result)
