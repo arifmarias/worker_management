@@ -66,6 +66,9 @@ with cols[0]:
         total_base_salary = df_info['worker_base_salary'].sum()
         for items in df_info.worker_name.unique():
             st.write(items)
+            st.write(df_salary['worker_name'])
+            st.write(df_salary['year_month'])
+            st.write(current_year_month)
             view_df = df_salary[(df_salary['worker_name'] == items) & (df_salary['year_month']==current_year_month)]
             st.write(view_df)
             if not view_df.empty:
