@@ -139,7 +139,7 @@ if selected == "Search":
         items_salary = db.fetch_all_salary()
         df_salary = pd.DataFrame(items_salary)
         salary_worker = df_salary[df_salary['worker_name'] == w_name]['today_pay'].sum()
-        st.write(type(salary_worker))
+        # st.write(type(salary_worker))
         cols = st.columns(3)
         with cols[0]:
             ui.metric_card(title="Name", content=selected_worker["worker_name"].values[0], description="Join in "+selected_worker['worker_joining_date'].values[0]+","+selected_worker['worker_gender'].values[0]+"\n Mobile: "+selected_worker['worker_phone_number'].values[0], key="card1")
@@ -148,8 +148,8 @@ if selected == "Search":
         with cols[2]:
             ui.metric_card(title="Workplace", content=selected_worker["worker_current_company"].values[0], description="Joined "+selected_worker['worker_currentcompany_joindate'].values[0]+"\n Address: "+selected_worker['worker_current_workplace'].values[0], key="card3")
         cols2 = st.columns(1)
-        # with cols2[0]:
-        #     ui.metric_card(title="Total Salary given Till Today", content=salary_worker, key="card4")
+        with cols2[0]:
+            ui.metric_card(title="Total Salary given Till Today", content=salary_worker.item(), key="card4")
 
 # --- Edit WORKER INFO ---
 
