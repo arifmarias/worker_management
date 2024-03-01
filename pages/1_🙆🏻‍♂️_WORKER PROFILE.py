@@ -177,7 +177,7 @@ if selected == "Edit Worker Information":
         #                                     'Terengganu','Perlis','Sabah','Sarawak']
             
         selected_worker = df[df["worker_name"] == w_name]
-        st.text_input("Worker Name",selected_worker['worker_name'].values[0])
+        #st.text_input("Worker Name",selected_worker['worker_name'].values[0])
         "---"
         #st.dataframe(selected_worker)
         left, right = st.columns(2)
