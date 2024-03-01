@@ -177,6 +177,7 @@ if selected == "Edit Worker Information":
                                             'Terengganu','Perlis','Sabah','Sarawak']
             
         selected_worker = df[df["worker_name"] == w_name]
+        edited_df = st.experimental_data_editor(selected_worker)
 #         st.text_input("Worker Name",selected_worker['worker_name'].values[0])
 #         "---"
 #         #st.dataframe(selected_worker)
