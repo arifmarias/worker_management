@@ -149,6 +149,9 @@ if selected == "Search":
             ui.metric_card(title="Passport Details", content=selected_worker["worker_passport"].values[0], description="Expiry Date: "+selected_worker['worker_pass_expiry'].values[0]+"\n Visa Expiry: "+selected_worker['worker_visa_expiry'].values[0], key="card2")
         with cols[2]:
             ui.metric_card(title="Workplace", content=selected_worker["worker_current_company"].values[0], description="Joined "+selected_worker['worker_currentcompany_joindate'].values[0]+"\n Address: "+selected_worker['worker_current_workplace'].values[0], key="card3")
+        cols = st.columns(1)
+        with cols[0]:
+            ui.metric_card(title="Total Salary given Till Today", content=salary_worker, key="card4")
 
 # --- Edit WORKER INFO ---
 
