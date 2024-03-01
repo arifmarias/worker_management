@@ -195,8 +195,8 @@ if selected == "Edit Worker Information":
                     
                 with st.expander("Passport Information"):
                     worker_passport = st.text_input("Passport Number",selected_worker['worker_passport'].values[0],key=3)
-                    worker_pass_expiry = st.date_input("Current Passport Expiry Date"+str(selected_worker['worker_pass_expiry'].values[0])+"Click to Chnage")
-                    worker_visa_expiry = st.date_input(selected_worker['worker_visa_expiry'].values[0])
+                    worker_pass_expiry = st.date_input("Current Passport Expiry Date "+str(selected_worker['worker_pass_expiry'].values[0])+" \n\n Click to Chnage")
+                    #worker_visa_expiry = st.date_input(selected_worker['worker_visa_expiry'].values[0])
                     #uploaded_file = st.file_uploader("Upload Passport with Visa Page(.pdf)")
             with right:
                 with st.expander("Work Related Info"):
