@@ -42,7 +42,7 @@ with st.container():
     if salary:
         switch_page("SALARY INFO")
 cols = st.columns(1)
-with cols[1]:
+with cols[0]:
     st.markdown("""---""")
     # ----- GET ALL WORKER DATA FROM WORKER_PROFILE ------------
     items = db.fetch_all_periods()
