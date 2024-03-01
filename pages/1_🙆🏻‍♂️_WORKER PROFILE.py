@@ -205,7 +205,8 @@ if selected == "Edit Worker Information":
                     #worker_state = selectbox("Select State",my_states,no_selection_label=selected_worker['worker_state'].values[0])
                     result = selectbox(
                                 "Select an option with different label",
-                                ["Kuala Lumpur", "Putrajaya", "Labuan"],
+                                ["Kuala Lumpur", "Putrajaya", "Labuan","Selangor","Malacca","Negeri Sembilan","Penang","Johor","Kedah",
+                                 "Kelantan"],
                                 no_selection_label=str(selected_worker['worker_state'].values[0]),
                             )
                     st.write(result)
