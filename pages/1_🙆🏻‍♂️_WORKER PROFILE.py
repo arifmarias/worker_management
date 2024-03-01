@@ -8,6 +8,7 @@ from streamlit_option_menu import option_menu  # pip install streamlit-option-me
 import streamlit_shadcn_ui as ui
 from streamlit_extras.switch_page_button import switch_page
 from streamlit_extras.no_default_selectbox import selectbox
+from streamlit_extras.dataframe_explorer import dataframe_explorer
 import database as db
 
 
@@ -154,6 +155,10 @@ if selected == "Search":
         cols2 = st.columns(1)
         with cols2[0]:
             ui.metric_card(title="Total Salary given Till Today", content=salary_worker.item(), key="card4")
+    
+    st.header("All Search")
+    filter_df = dataframe_explorer(df,case=False)
+    st.dataframe(filter_df,use_container_width=True)
 
 # --- Edit WORKER INFO ---
 
@@ -210,8 +215,8 @@ if selected == "Edit Worker Information":
                                 myStates(selected_worker['worker_state'].values[0]),
                                 no_selection_label=str(selected_worker['worker_state'].values[0]),
                             )
-                    st.write(result)
-                    # worker_state_new = st.selectbox("State",options=st.session_state['state_list'],key='second_sb')
+                    #st.write(result)
+                    
                     worker_pic = st.text_area("Current Company PIC(Person-in-Charge) Details",selected_worker['worker_pic'].values[0],key=7)
                    # worker_currentcompany_joindate = st.date_input("Current Company Join Date",selected_worker['worker_currentcompany_joindate'].values[0])
                     
