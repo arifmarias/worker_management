@@ -158,7 +158,7 @@ if selected == "Search":
     
     st.header("All Search")
     filter_df = dataframe_explorer(df,case=False)
-    st.dataframe(filter_df,use_container_width=True)
+    st.dataframe(filter_df,use_container_width=True,hide_index=True)
 
 # --- Edit WORKER INFO ---
 
