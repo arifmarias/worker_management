@@ -156,27 +156,27 @@ if selected == "Search":
 
 # --- Edit WORKER INFO ---
 
-# if selected == "Edit Worker Information":
-#     st.header("Edit Worker Information")
-#     st.session_state['state_list']=['Kuala Lumpur','Putrajaya','Labuan','Selangor','Malacca',\
-#                                             'Negeri Sembilan','Penang','Johor','Kedah','Kelantan','Perak','Pahang',\
-#                                             'Terengganu','Perlis','Sabah','Sarawak']
-#      # ----- GET ALL WORKER DATA FROM DATABASE------------
-#     items = db.fetch_all_periods()
-#     df = pd.DataFrame(items)
-# # --------------------------------------
-#     # ----- SEARCHBOX ------------
-#     worker_name = df["worker_name"].drop_duplicates().sort_values(ascending=False)
-#     lst_worker_name = list(worker_name)
-#     lst_worker_name.insert(0,"Select")
-#     w_name = st.selectbox(options = lst_worker_name, label="Select Worker Name",index=0)
-#     if w_name!='Select':
-#         def state_list():
-#             st.session_state['state_list'] = ['Kuala Lumpur','Putrajaya','Labuan','Selangor','Malacca',\
-#                                             'Negeri Sembilan','Penang','Johor','Kedah','Kelantan','Perak','Pahang',\
-#                                             'Terengganu','Perlis','Sabah','Sarawak']
+if selected == "Edit Worker Information":
+    st.header("Edit Worker Information")
+    st.session_state['state_list']=['Kuala Lumpur','Putrajaya','Labuan','Selangor','Malacca',\
+                                            'Negeri Sembilan','Penang','Johor','Kedah','Kelantan','Perak','Pahang',\
+                                            'Terengganu','Perlis','Sabah','Sarawak']
+     # ----- GET ALL WORKER DATA FROM DATABASE------------
+    items = db.fetch_all_periods()
+    df = pd.DataFrame(items)
+# --------------------------------------
+    # ----- SEARCHBOX ------------
+    worker_name = df["worker_name"].drop_duplicates().sort_values(ascending=False)
+    lst_worker_name = list(worker_name)
+    lst_worker_name.insert(0,"Select")
+    w_name = st.selectbox(options = lst_worker_name, label="Select Worker Name",index=0)
+    if w_name!='Select':
+        def state_list():
+            st.session_state['state_list'] = ['Kuala Lumpur','Putrajaya','Labuan','Selangor','Malacca',\
+                                            'Negeri Sembilan','Penang','Johor','Kedah','Kelantan','Perak','Pahang',\
+                                            'Terengganu','Perlis','Sabah','Sarawak']
             
-#         selected_worker = df[df["worker_name"] == w_name]
+        selected_worker = df[df["worker_name"] == w_name]
 #         st.text_input("Worker Name",selected_worker['worker_name'].values[0])
 #         "---"
 #         #st.dataframe(selected_worker)
