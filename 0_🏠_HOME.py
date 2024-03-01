@@ -81,4 +81,4 @@ with cols[0]:
     with cols[1]:
         ui.metric_card(title="Total Salary", content=f"RM {total_base_salary:,}", description="For All Workers", key="card2")
     with cols[2]:
-        ui.metric_card(title="Paid Out", content=f"RM {total_pay_out:,}", description="This Month: "+ calendar.month_name[current_month], key="card3")
+        ui.metric_card(title="Paid Out", content=f"RM {total_pay_out:,}", description="This Month: "+ calendar.month_name[current_month]+","+current_year, key="card3")
