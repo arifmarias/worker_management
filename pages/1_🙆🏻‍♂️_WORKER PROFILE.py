@@ -187,7 +187,7 @@ if selected == "Edit Worker Information":
                             'Terengganu','Perlis','Sabah','Sarawak']
             with left:
                 with st.expander("General Information"):
-                    worker_name = st.text_input("Worker Name",value=selected_worker['worker_name'].values[0],key=1)
+                    worker_name = st.text_input("Worker Name",value=selected_worker['worker_name'].values[0],key=1,disabled=True)
                     #worker_joining_date = st.date_input("Employee Join Date",selected_worker['worker_joining_date'].values[0],key=selected_worker['key'].values[0])
                     worker_gender = st.radio("Gender", options=("Male","Female"), horizontal=True)
                     worker_phone_number = st.text_input("Personal Phone Number",selected_worker['worker_phone_number'].values[0],key=2)
@@ -201,7 +201,7 @@ if selected == "Edit Worker Information":
                 with st.expander("Work Related Info"):
                     worker_current_company = st.text_input("Current Working Company Name",selected_worker['worker_current_company'].values[0],key=4)
                     worker_current_workplace = st.text_area("Address",selected_worker['worker_current_workplace'].values[0],key=6)
-                    worker_state = st.selectbox(selected_worker['worker_state'].values[0],options=my_states,key='first_sb',disabled=True)
+                    worker_state = st.selectbox(selected_worker['worker_state'].values[0],options=my_states,key='first_sb')
                     # worker_state_new = st.selectbox("State",options=st.session_state['state_list'],key='second_sb')
                     worker_pic = st.text_area("Current Company PIC(Person-in-Charge) Details",selected_worker['worker_pic'].values[0],key=7)
                    # worker_currentcompany_joindate = st.date_input("Current Company Join Date",selected_worker['worker_currentcompany_joindate'].values[0])
