@@ -54,6 +54,7 @@ with cols[0]:
     # --- GET CURRENT MONTH YEAR ---
     years = [datetime.today().year, datetime.today().year + 1]
     months = list(calendar.month_name[1:])
+    st.write(months)
     current_date = date.today()
     current_year = current_date.year
     current_month = current_date.month
@@ -81,4 +82,4 @@ with cols[0]:
     with cols[1]:
         ui.metric_card(title="Total Salary", content=f"RM {total_base_salary:,}", description="For All Workers", key="card2")
     with cols[2]:
-        ui.metric_card(title="Paid Out", content=f"RM {total_pay_out:,}", description="This Month: "+ months, key="card3")
+        ui.metric_card(title="Paid Out", content=f"RM {total_pay_out:,}", description="This Month: ", key="card3")
