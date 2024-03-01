@@ -8,6 +8,7 @@ from streamlit_option_menu import option_menu  # pip install streamlit-option-me
 import streamlit_shadcn_ui as ui
 from streamlit_extras.switch_page_button import switch_page
 import database as db
+import os
 
 # -------------- SETTINGS --------------
 currency = "RM"
@@ -142,7 +143,7 @@ if selected == "Search":
         # st.write(type(salary_worker))
         cols = st.columns(1)
         with cols[0]:
-            ui.metric_card(title="Name", content=selected_worker["worker_name"].values[0], description="Join in "+selected_worker['worker_joining_date'].values[0]+","+selected_worker['worker_gender'].values[0]+"\n Mobile: "+selected_worker['worker_phone_number'].values[0], key="card1")
+            ui.metric_card(title="Name", content=selected_worker["worker_name"].values[0], description="Join in "+selected_worker['worker_joining_date'].values[0]+","+selected_worker['worker_gender'].values[0]+os.linesep+"\n Mobile: "+selected_worker['worker_phone_number'].values[0], key="card1")
         cols = st.columns(1)
         with cols[0]:
             ui.metric_card(title="Passport Details", content=selected_worker["worker_passport"].values[0], description="Expiry Date: "+selected_worker['worker_pass_expiry'].values[0]+"\n Visa Expiry: "+selected_worker['worker_visa_expiry'].values[0], key="card2")
