@@ -194,6 +194,7 @@ if selected == "Edit Worker Information":
                     worker_phone_number = st.text_input("Personal Phone Number",selected_worker['worker_phone_number'].values[0],key=2)
                     
                 with st.expander("Passport Information"):
+                    st.markdown(".stDateInput > label {font-size:105%; font-weight:bold; color:blue;} ",unsafe_allow_html=True)
                     worker_passport = st.text_input("Passport Number",selected_worker['worker_passport'].values[0],key=3)
                     worker_pass_expiry = st.date_input("Current Passport Expiry Date \n\n"+str(selected_worker['worker_pass_expiry'].values[0])+" \n\n Click to Change")
                     #worker_visa_expiry = st.date_input(selected_worker['worker_visa_expiry'].values[0])
