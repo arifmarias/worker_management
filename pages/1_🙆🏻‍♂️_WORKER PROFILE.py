@@ -126,12 +126,7 @@ if selected == "Search":
     st.header("Search Worker Information")
      # ----- GET ALL WORKER DATA FROM DATABASE------------
     items = db.fetch_all_periods()
-    df = pd.DataFrame(items)
-    
-    # ----- GET ALL WORKER DATA FROM WORKER_SALARY ------------
-    items_salary = db.fetch_all_salary()
-    df_salary = pd.DataFrame(items_salary)
-   
+    df = pd.DataFrame(items) 
 
     # ----- SEARCHBOX ------------
     worker_name = df["worker_name"].drop_duplicates().sort_values(ascending=False)
@@ -140,6 +135,9 @@ if selected == "Search":
     w_name = st.selectbox(options = lst_worker_name, label="Select Worker Name")
     if w_name!='Select':
         selected_worker = df[df["worker_name"] == w_name]
+            # ----- GET ALL WORKER DATA FROM WORKER_SALARY ------------
+        items_salary = db.fetch_all_salary()
+        df_salary = pd.DataFrame(items_salary)
         salary_worker = df_salary[df_salary['worker_name'] == w_name]['today_pay'].sum()
         st.write(salary_worker)
         cols = st.columns(3)
@@ -149,8 +147,8 @@ if selected == "Search":
             ui.metric_card(title="Passport Details", content=selected_worker["worker_passport"].values[0], description="Expiry Date: "+selected_worker['worker_pass_expiry'].values[0]+"\n Visa Expiry: "+selected_worker['worker_visa_expiry'].values[0], key="card2")
         with cols[2]:
             ui.metric_card(title="Workplace", content=selected_worker["worker_current_company"].values[0], description="Joined "+selected_worker['worker_currentcompany_joindate'].values[0]+"\n Address: "+selected_worker['worker_current_workplace'].values[0], key="card3")
-        cols = st.columns(1)
-        with cols[0]:
+        cols2 = st.columns(1)
+        with cols2[0]:
             ui.metric_card(title="Total Salary given Till Today", content=salary_worker, key="card4")
 
 # --- Edit WORKER INFO ---
