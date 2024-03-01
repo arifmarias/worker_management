@@ -7,6 +7,7 @@ import streamlit as st  # pip install streamlit
 from streamlit_option_menu import option_menu  # pip install streamlit-option-menu
 import streamlit_shadcn_ui as ui
 from streamlit_extras.switch_page_button import switch_page
+from streamlit_extras.no_default_selectbox import selectbox
 import database as db
 
 
@@ -201,7 +202,7 @@ if selected == "Edit Worker Information":
                 with st.expander("Work Related Info"):
                     worker_current_company = st.text_input("Current Working Company Name",selected_worker['worker_current_company'].values[0],key=4)
                     worker_current_workplace = st.text_area("Address",selected_worker['worker_current_workplace'].values[0],key=6)
-                    worker_state = st.selectbox("Select State",options=my_states,placeholder=selected_worker['worker_state'].values[0],key='first_sb')
+                    worker_state = selectbox("Select State",options=my_states,no_selection_label=selected_worker['worker_state'].values[0],key='first_sb')
                     # worker_state_new = st.selectbox("State",options=st.session_state['state_list'],key='second_sb')
                     worker_pic = st.text_area("Current Company PIC(Person-in-Charge) Details",selected_worker['worker_pic'].values[0],key=7)
                    # worker_currentcompany_joindate = st.date_input("Current Company Join Date",selected_worker['worker_currentcompany_joindate'].values[0])
