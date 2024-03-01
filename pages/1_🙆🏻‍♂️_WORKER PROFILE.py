@@ -127,7 +127,10 @@ if selected == "Search":
      # ----- GET ALL WORKER DATA FROM DATABASE------------
     items = db.fetch_all_periods()
     df = pd.DataFrame(items)
-    # --------------------------------------
+    
+    # ----- GET ALL WORKER DATA FROM WORKER_SALARY ------------
+    items_salary = db.fetch_all_salary()
+    df_salary = pd.DataFrame(items_salary)
    
 
     # ----- SEARCHBOX ------------
@@ -137,6 +140,8 @@ if selected == "Search":
     w_name = st.selectbox(options = lst_worker_name, label="Select Worker Name")
     if w_name!='Select':
         selected_worker = df[df["worker_name"] == w_name]
+        salary_worker = df_salary[df_salary['worker_name'] == w_name]['today_pay'].sum()
+        st.write(salary_worker)
         cols = st.columns(3)
         with cols[0]:
             ui.metric_card(title="Name", content=selected_worker["worker_name"].values[0], description="Join in "+selected_worker['worker_joining_date'].values[0]+","+selected_worker['worker_gender'].values[0]+"\n Mobile: "+selected_worker['worker_phone_number'].values[0], key="card1")
