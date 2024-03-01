@@ -57,7 +57,6 @@ with cols[0]:
     current_date = date.today()
     current_year = current_date.year
     current_month = current_date.month
-    st.write(type(current_month))
     current_day = current_date.day
     current_year_month = str(current_year) + "-" + str(current_month)
     total_salary_remain = 0
@@ -82,4 +81,4 @@ with cols[0]:
     with cols[1]:
         ui.metric_card(title="Total Salary", content=f"RM {total_base_salary:,}", description="For All Workers", key="card2")
     with cols[2]:
-        ui.metric_card(title="Paid Out", content=f"RM {total_pay_out:,}", description="This Month: ", key="card3")
+        ui.metric_card(title="Paid Out", content=f"RM {total_pay_out:,}", description="This Month: "+ calendar.month_name[current_month], key="card3")
