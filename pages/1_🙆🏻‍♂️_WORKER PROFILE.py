@@ -204,9 +204,9 @@ if selected == "Edit Worker Information":
                         return [states for states in my_states if states!=selected_state]
                     worker_current_company = st.text_input("Current Working Company Name",selected_worker['worker_current_company'].values[0],key=4)
                     worker_current_workplace = st.text_area("Address",selected_worker['worker_current_workplace'].values[0],key=6)
-                    #worker_state = selectbox("Select State",my_states,no_selection_label=selected_worker['worker_state'].values[0])
+                    
                     result = selectbox(
-                                "Select an option with different label",
+                                "State",
                                 myStates(selected_worker['worker_state'].values[0]),
                                 no_selection_label=str(selected_worker['worker_state'].values[0]),
                             )
