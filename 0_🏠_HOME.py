@@ -2,12 +2,8 @@ import calendar  # Core Python Module
 from datetime import datetime  # Core Python Module
 from datetime import date
 import pandas as pd
-import numpy as np
-
-import plotly.express as px
 import streamlit as st  # pip install streamlit
 from streamlit_option_menu import option_menu  # pip install streamlit-option-menu
-from st_aggrid import AgGrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 from streamlit_extras.switch_page_button import switch_page
 import streamlit_shadcn_ui as ui

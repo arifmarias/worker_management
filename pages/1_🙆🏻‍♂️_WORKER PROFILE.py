@@ -158,6 +158,7 @@ if selected == "Search":
     
     st.header("All Search")
     filter_df = dataframe_explorer(df,case=False)
+    #filered_df = filter_df['worker_name','worker_passport','worker_pass_expiry','worker_visa_expiry','worker_current_company']
     st.dataframe(filter_df,use_container_width=True,hide_index=True)
 
 # --- Edit WORKER INFO ---
