@@ -159,8 +159,21 @@ if selected == "Search":
             ui.metric_card(title="Total Salary given Till Today", content=salary_worker.item(), key="card4")
     
     st.header("All Search")
-    filter_df = dataframe_explorer(df,case=False)
-    #filered_df = filter_df['worker_name','worker_passport','worker_pass_expiry','worker_visa_expiry','worker_current_company']
+    # filter_df = dataframe_explorer(df,case=False)
+    column_des = {
+                'worker_name':'Worker Name',
+                'worker_phone_number':'Phone Number',
+                'worker_passport':'Passport Number',
+                'worker_pass_expiry':'Passport Expiry Date',
+                'worker_visa_expiry':'Visa Expiry Date',
+                'worker_current_company': 'Current Company Name',
+                'worker_state':'Working State',
+                'worker_base_salary':'Base Salary'
+        
+    }
+    filtered_df = df[['worker_name','worker_phone_number','worker_passport','worker_pass_expiry','worker_visa_expiry','worker_current_company','worker_state','worker_base_salary']]
+    filtered_df.rename(columns=column_des,inplace=True)
+    filter_df = dataframe_explorer(filtered_df,case=False)
     st.dataframe(filter_df,use_container_width=True,hide_index=True)
 
 # --- Edit WORKER INFO ---
