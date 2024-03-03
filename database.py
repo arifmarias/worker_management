@@ -5,10 +5,10 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
-DETA_KEY = "c06szqbzn1w_B32r3xDfsePCuuyvgP19q5oW8gRmFxBN"
+#DETA_KEY = "c06szqbzn1w_B32r3xDfsePCuuyvgP19q5oW8gRmFxBN"
 
 # Load the environment variables
-#DETA_KEY = st.secrets["DETA_KEY"]
+DETA_KEY = st.secrets["DETA_KEY"]
 # Initialize with a project key
 deta = Deta(DETA_KEY)
 
