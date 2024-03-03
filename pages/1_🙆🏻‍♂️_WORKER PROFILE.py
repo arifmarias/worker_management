@@ -10,6 +10,8 @@ from streamlit_extras.switch_page_button import switch_page
 from streamlit_extras.no_default_selectbox import selectbox
 from streamlit_extras.dataframe_explorer import dataframe_explorer
 import database as db
+import warnings
+warnings.filterwarnings("ignore")
 
 
 # -------------- SETTINGS --------------

@@ -7,6 +7,8 @@ from streamlit_option_menu import option_menu  # pip install streamlit-option-me
 from streamlit_extras.switch_page_button import switch_page
 import streamlit_shadcn_ui as ui
 import database as db
+import warnings
+warnings.filterwarnings("ignore")
 
 # -------------- SETTINGS --------------
 currency = "RM"
