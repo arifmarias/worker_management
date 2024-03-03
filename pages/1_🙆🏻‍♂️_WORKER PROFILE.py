@@ -201,6 +201,9 @@ if selected == "Edit Worker Information":
         selected_worker = df[df["worker_name"] == w_name]
         #st.text_input("Worker Name",selected_worker['worker_name'].values[0])
         "---"
+        worker_key = selected_worker['key'].values[0]
+        worker_input_date = selected_worker['input_date'].values[0]
+        worker_period = selected_worker['period'].values[0]
         #st.dataframe(selected_worker)
         left, right = st.columns(2)
         with st.form("edit_form", clear_on_submit=True):
@@ -210,37 +213,73 @@ if selected == "Edit Worker Information":
             with left:
                 with st.expander("General Information"):
                     worker_name = st.text_input("Worker Name",value=selected_worker['worker_name'].values[0],key=1,disabled=True)
-                    #worker_joining_date = st.date_input("Employee Join Date",selected_worker['worker_joining_date'].values[0],key=selected_worker['key'].values[0])
-                    worker_gender = st.radio("Gender", options=("Male","Female"), horizontal=True)
-                    worker_phone_number = st.text_input("Personal Phone Number",selected_worker['worker_phone_number'].values[0],key=2)
+                    join_date = datetime.strptime(selected_worker['worker_joining_date'].values[0],'%Y-%m-%d')
+                    worker_joining_date = st.date_input("Employee Join Date",value=join_date,key=2,disabled=True)
+                    worker_gender = st.radio("Gender", options=("Male","Female"), horizontal=True,disabled=True)
+                    worker_phone_number = st.text_input("Personal Phone Number",selected_worker['worker_phone_number'].values[0],key=3)
                     
                 with st.expander("Passport Information"):
-                    worker_passport = st.text_input("Passport Number",selected_worker['worker_passport'].values[0],key=3)
-                    worker_pass_expiry = st.date_input("Current Passport Expiry Date \n\n"+str(selected_worker['worker_pass_expiry'].values[0])+" \n\n Click to Change")
-                    #worker_visa_expiry = st.date_input(selected_worker['worker_visa_expiry'].values[0])
+                    worker_passport = st.text_input("Passport Number",selected_worker['worker_passport'].values[0],key=4)
+                    # Passport Expiry Date
+                    new_worker_pass_expiry = st.date_input("Current Passport Expiry Date \n\n"+str(selected_worker['worker_pass_expiry'].values[0])+" \n\n Click to Change",key=5)
+                    if new_worker_pass_expiry!=selected_worker['worker_pass_expiry'].values[0]:
+                        worker_pass_expiry = new_worker_pass_expiry
+                        print("New Date")
+                    else:
+                        worker_pass_expiry = selected_worker['worker_pass_expiry'].values[0]
+                        print("Old Date")
+                    # Visa Expiry Date
+                    new_worker_visa_expiry = st.date_input("Current Visa Expiry Date \n\n"+str(selected_worker['worker_visa_expiry'].values[0])+" \n\n Click to Change",key=6)
+                    if new_worker_visa_expiry!=selected_worker['worker_visa_expiry'].values[0]:
+                        worker_visa_expiry = new_worker_pass_expiry
+                        print("New Visa Date")
+                    else:
+                        worker_visa_expiry = selected_worker['worker_visa_expiry'].values[0]
+                        print("Old Visa Date")
                     #uploaded_file = st.file_uploader("Upload Passport with Visa Page(.pdf)")
             with right:
                 with st.expander("Work Related Info"):
                     def myStates(selected_state):
                         return [states for states in my_states if states!=selected_state]
-                    worker_current_company = st.text_input("Current Working Company Name",selected_worker['worker_current_company'].values[0],key=4)
-                    worker_current_workplace = st.text_area("Address",selected_worker['worker_current_workplace'].values[0],key=6)
+                    worker_current_company = st.text_input("Current Working Company Name",selected_worker['worker_current_company'].values[0],key=7)
+                    worker_current_workplace = st.text_area("Address",selected_worker['worker_current_workplace'].values[0],key=8)
                     
                     result = selectbox(
                                 "State",
                                 myStates(selected_worker['worker_state'].values[0]),
                                 no_selection_label=str(selected_worker['worker_state'].values[0]),
                             )
+                    if result == 'None':
+                        worker_state = selected_worker['worker_state'].values[0]
+                    else:
+                        worker_state = result
                     #st.write(result)
                     
-                    worker_pic = st.text_area("Current Company PIC(Person-in-Charge) Details",selected_worker['worker_pic'].values[0],key=7)
-                   # worker_currentcompany_joindate = st.date_input("Current Company Join Date",selected_worker['worker_currentcompany_joindate'].values[0])
+                    worker_pic = st.text_area("Current Company PIC(Person-in-Charge) Details",selected_worker['worker_pic'].values[0],key=9)
+                    # Company Joining Date
+                    new_worker_currentcompany_joindate = st.date_input("Current Company Joining Date \n\n"+str(selected_worker['worker_currentcompany_joindate'].values[0])+" \n\n Click to Change",key=10)
+                    if new_worker_currentcompany_joindate!=selected_worker['worker_currentcompany_joindate'].values[0]:
+                        worker_currentcompany_joindate = new_worker_currentcompany_joindate
+                        print("New Visa Date")
+                    else:
+                        worker_currentcompany_joindate = selected_worker['worker_currentcompany_joindate'].values[0]
+                        print("Old Visa Date")
                     
                 with st.expander("Salary info"):
-                    worker_base_salary = st.number_input("Worker Current Base Salary",selected_worker['worker_base_salary'].values[0])
+                    worker_base_salary = st.number_input("Worker Current Base Salary",selected_worker['worker_base_salary'].values[0],key=11)
                 
             with st.expander("Other"):
-                comments = st.text_input("Comments(if any)",selected_worker['comments'].values[0],key=5)
+                comments = st.text_input("Comments(if any)",selected_worker['comments'].values[0],key=12)
             "---"
             submitted = st.form_submit_button("Update Data")
+            if submitted:
+                db.update_info(str(worker_key), str(worker_input_date),str(worker_period),
+                            worker_name, str(worker_joining_date), str(worker_gender),
+                            str(worker_phone_number), worker_passport, str(worker_pass_expiry), 
+                            str(worker_visa_expiry), str(worker_current_company),
+                            str(worker_current_workplace), str(worker_state),str(worker_pic), 
+                            str(worker_currentcompany_joindate), worker_base_salary, 
+                            comments
+                            )
+                st.success("Data Updated!")
     

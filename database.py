@@ -5,10 +5,10 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
-#DETA_KEY = "c06szqbzn1w_B32r3xDfsePCuuyvgP19q5oW8gRmFxBN"
+DETA_KEY = "c06szqbzn1w_B32r3xDfsePCuuyvgP19q5oW8gRmFxBN"
 
 # Load the environment variables
-DETA_KEY = st.secrets["DETA_KEY"]
+#DETA_KEY = st.secrets["DETA_KEY"]
 # Initialize with a project key
 deta = Deta(DETA_KEY)
 
@@ -59,7 +59,7 @@ def update_info(current,input_date,period,
                 worker_state,worker_pic, 
                 worker_currentcompany_joindate, 
                 worker_base_salary, comments):
-    return db_worker.update({"key": current,"input_date": input_date,"period": period,
+    return db_worker.update({"input_date": input_date,"period": period,
                    "worker_name":worker_name, 
                     "worker_joining_date":worker_joining_date, 
                     "worker_gender":worker_gender,
@@ -74,7 +74,7 @@ def update_info(current,input_date,period,
                     "worker_currentcompany_joindate":worker_currentcompany_joindate, 
                     "worker_base_salary":worker_base_salary, 
                     "comments":comments
-                   })
+                   },str(current))
 # ---- WORKER SALARY DB ----- 
 def insert_salary_data(current,payment_date,w_name,year_month,
                        today_pay,payment_purpose,salary_remain):
