@@ -2,6 +2,7 @@ import streamlit as st  # pip install streamlit
 from deta import Deta  # pip install deta
 from datetime import datetime
 
+
 #DETA_KEY = "c06szqbzn1w_B32r3xDfsePCuuyvgP19q5oW8gRmFxBN"
 
 # Load the environment variables
